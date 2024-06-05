@@ -24,4 +24,5 @@ public class AccountDO {
     private String userFamilyCode;
     private Date userBirthday;
     private String userPassword;
+    
 }

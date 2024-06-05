@@ -1,12 +1,12 @@
 package com.graduation.account.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.graduation.account.mapper.AccountMapper;
 import com.graduation.account.model.AccountDO;
 import com.graduation.common.bcrypt.BCryptPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 /**
  * 项目名: graduation-design
@@ -31,7 +31,7 @@ public class AccountServiceImpl implements AccountService {
         queryWrapper.eq("user_name", userName);
 
         AccountDO accountDO = accountMapper.selectOne(queryWrapper);
-        if (accountDO != null && !PASSWORD_ENCODER.matches(password, accountDO.getPassword())) {
+        if (accountDO != null && !PASSWORD_ENCODER.matches(password, accountDO.getUserPassword())) {
             return null;
         }
         return accountDO;
